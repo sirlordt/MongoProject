@@ -79,7 +79,8 @@ public class CMain {
 			long lngCreatedTime = new Date().getTime()/1000;
 			long lngTTL = lngCreatedTime + 4;
 			
-			db.getCollection( "ObjectCache" ).drop();
+			if ( db.collectionExists( "ObjectCache" ) )
+				db.getCollection( "ObjectCache" ).drop();
 			
 			final DBCollection table = db.getCollection( "ObjectCache" );
 			
